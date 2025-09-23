@@ -78,6 +78,10 @@ Kubernetes uses a **master–worker (control plane + nodes)** design.
 
 ---
 
+![alt text](image.png)
+
+---
+
 ###  Control Plane
 The **brain** of Kubernetes.
 - **API Server (`kube-apiserver`)** → Entry point for all commands.  
@@ -158,14 +162,6 @@ Nodes run applications inside **Pods**.
 - Machine learning pipelines  
 - CI/CD automation  
 - High availability enterprise apps  
-
----
-
-##  Resources
-
-- [Kubernetes Official Docs](https://kubernetes.io/docs/)  
-- [CNCF Landscape](https://landscape.cncf.io/)  
-- [Awesome Kubernetes GitHub](https://github.com/ramitsurana/awesome-kubernetes)  
 
 ---
 
