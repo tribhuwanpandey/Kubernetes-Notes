@@ -5,7 +5,7 @@ Kubernetes (a.k.a. **K8s**) is the world’s leading **container orchestration p
 ---
 
 ##  Table of Contents
-1. [What is Kubernetes?](#-what-is-kubernetes)  
+1. [What is Kubernetes?](##  What is Kubernetes?)  
 2. [Key Features](#-key-features)  
 3. [Kubernetes Architecture](#-kubernetes-architecture)  
    - [Control Plane](#control-plane)  
