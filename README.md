@@ -4,27 +4,29 @@ Kubernetes (a.k.a. **K8s**) is the world’s leading **container orchestration p
 
 ---
 
-##  Table of Contents
-1. [What is Kubernetes?](##  What is Kubernetes?)  
-2. [Key Features](#-key-features)  
-3. [Kubernetes Architecture](#-kubernetes-architecture)  
+## Table of Contents
+
+1. [What is Kubernetes?](#what-is-kubernetes)  
+2. [Key Features](#key-features)  
+3. [Kubernetes Architecture](#kubernetes-architecture)  
    - [Control Plane](#control-plane)  
    - [Worker Nodes](#worker-nodes)  
    - [Kubernetes Objects](#kubernetes-objects)  
-4. [Kubernetes Workflow](#-kubernetes-workflow)  
-5. [Competitors & Comparisons](#-competitors--alternatives-to-kubernetes)  
-6. [Advantages & Challenges](#-advantages--challenges)  
-7. [Use Cases](#-use-cases)  
-8. [Resources](#-resources)  
-9. [Examples](#-examples)  
-10. [Workload Management](#-workload-management)  
-11. [Security in Kubernetes](#-security-in-kubernetes)  
-12. [Observability](#-observability)  
-13. [Networking & Traffic Management](#-networking--traffic-management)  
-14. [Storage & Data Management](#-storage--data-management)  
-15. [Advanced Deployments](#-advanced-deployments)  
-16. [Cloud-Native Integrations](#-cloud-native-integrations)  
-17. [Multi-Cluster & Scaling](#-multi-cluster--scaling)  
+4. [Kubernetes Workflow](#kubernetes-workflow)  
+5. [Competitors & Alternatives to Kubernetes](#competitors--alternatives-to-kubernetes)  
+6. [Advantages & Challenges](#advantages--challenges)  
+7. [Use Cases](#use-cases)  
+8. [Resources](#resources)  
+9. [Examples](#examples)  
+10. [Workload Management](#workload-management)  
+11. [Security in Kubernetes](#security-in-kubernetes)  
+12. [Observability](#observability)  
+13. [Networking & Traffic Management](#networking--traffic-management)  
+14. [Storage & Data Management](#storage--data-management)  
+15. [Advanced Deployments](#advanced-deployments)  
+16. [Cloud-Native Integrations](#cloud-native-integrations)  
+17. [Multi-Cluster & Scaling](#multi-cluster--scaling)  
+
  
 
 ---
