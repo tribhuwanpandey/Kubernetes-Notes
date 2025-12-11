@@ -4,33 +4,6 @@ Kubernetes (a.k.a. **K8s**) is the world’s leading **container orchestration p
 
 ---
 
-## Table of Contents
-
-1. [What is Kubernetes?](#what-is-kubernetes)  
-2. [Key Features](#key-features)  
-3. [Kubernetes Architecture](#kubernetes-architecture)  
-   - [Control Plane](#control-plane)  
-   - [Worker Nodes](#worker-nodes)  
-   - [Kubernetes Objects](#kubernetes-objects)  
-4. [Kubernetes Workflow](#kubernetes-workflow)  
-5. [Competitors & Alternatives to Kubernetes](#competitors--alternatives-to-kubernetes)  
-6. [Advantages & Challenges](#advantages--challenges)  
-7. [Use Cases](#use-cases)  
-8. [Resources](#resources)  
-9. [Examples](#examples)  
-10. [Workload Management](#workload-management)  
-11. [Security in Kubernetes](#security-in-kubernetes)  
-12. [Observability](#observability)  
-13. [Networking & Traffic Management](#networking--traffic-management)  
-14. [Storage & Data Management](#storage--data-management)  
-15. [Advanced Deployments](#advanced-deployments)  
-16. [Cloud-Native Integrations](#cloud-native-integrations)  
-17. [Multi-Cluster & Scaling](#multi-cluster--scaling)  
-
- 
-
----
-
 ##  What is Kubernetes?
 
 Kubernetes is an **open-source system for automating deployment, scaling, and management of containerized applications**.  
@@ -92,11 +65,11 @@ Kubernetes uses a **master–worker (control plane + nodes)** design.
 ![alt text](image.png)
 
 ---
-##  Control Plane (Master Components)
+###  Control Plane (Master Components)
 
 The control plane is responsible for maintaining the *desired state* of the cluster. Every operation—deployment, scaling, rolling updates, resource creation—flows through it.
 
-### ### 1. API Server (`kube-apiserver`)
+### #### 1. API Server (`kube-apiserver`)
 **The front door to the Kubernetes cluster.**
 
 - Exposes a RESTful interface used by kubectl, controllers, operators, and internal services.
@@ -109,7 +82,7 @@ The control plane is responsible for maintaining the *desired state* of the clus
 
 ---
 
-### 2. etcd
+#### 2. etcd
 **A distributed, strongly consistent key-value store.**
 
 - Stores *all cluster state*—nodes, objects, configuration, events.
@@ -124,7 +97,7 @@ The control plane is responsible for maintaining the *desired state* of the clus
 
 ---
 
-### 3. Scheduler (`kube-scheduler`)
+#### 3. Scheduler (`kube-scheduler`)
 **Makes intelligent placement decisions for Pods.**
 
 - Watches for *unscheduled* Pods and assigns them to suitable nodes.
@@ -139,7 +112,7 @@ The control plane is responsible for maintaining the *desired state* of the clus
 
 ---
 
-### 4. Controller Manager (`kube-controller-manager`)
+#### 4. Controller Manager (`kube-controller-manager`)
 A collection of control loops that continuously reconcile actual vs. desired state.
 
 Includes controllers like:
@@ -155,11 +128,11 @@ Includes controllers like:
 
 ---
 
-## 🔹 Worker Nodes (Data Plane)
+###  Worker Nodes (Data Plane)
 
 Worker nodes execute workloads and provide runtime services.
 
-### 1. Kubelet
+#### 1. Kubelet
 **Primary node agent.**
 
 - Ensures containers described in PodSpecs are running.
@@ -172,7 +145,7 @@ Worker nodes execute workloads and provide runtime services.
 
 ---
 
-### 2. Kube-proxy
+#### 2. Kube-proxy
 **Handles node-level networking and service routing.**
 
 - Implements Kubernetes Services using:
@@ -184,7 +157,7 @@ Worker nodes execute workloads and provide runtime services.
 
 ---
 
-### 3. Container Runtime
+#### 3. Container Runtime
 Responsible for running containers based on OCI standards.
 
 Common runtimes:
@@ -201,9 +174,9 @@ Common runtimes:
 
 ---
 
-## 🔹 Kubernetes Objects (Declarative Resources)
+###  Kubernetes Objects (Declarative Resources)
 
-### 1. Pod
+#### 1. Pod
 - Smallest deployable unit.
 - Contains one or more tightly coupled containers sharing:
   - Network namespace (same IP)
@@ -212,7 +185,7 @@ Common runtimes:
 
 ---
 
-### 2. Service
+#### 2. Service
 Provides **stable networking** to ephemeral Pods.
 
 Types:
@@ -225,7 +198,7 @@ Creates a virtual IP that load balances traffic across Pod endpoints.
 
 ---
 
-### 3. Deployment
+#### 3. Deployment
 Used for stateless applications.
 
 - Manages ReplicaSets.
@@ -236,7 +209,7 @@ Used for stateless applications.
 
 ---
 
-### 4. ConfigMap & Secret
+#### 4. ConfigMap & Secret
 Used to decouple configuration from container images.
 
 - **ConfigMap** → non-sensitive config.
@@ -249,7 +222,7 @@ Mount as:
 
 ---
 
-### 5. Namespace
+#### 5. Namespace
 Logical partitioning of cluster resources.
 
 Useful for:
@@ -359,7 +332,7 @@ spec:
 
 ---
 
-## ⚙️ Workload Management — Deep Dive for Experienced DevOps Engineers
+##  Workload Management — 
 
 Kubernetes manages workloads through a set of higher-level controllers that continuously reconcile **desired state** with **actual state**. While Deployments handle most stateless applications, production-grade clusters rely on several other controllers that fit specific workload patterns.
 
