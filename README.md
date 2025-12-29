@@ -177,59 +177,65 @@ Common runtimes:
 ###  Kubernetes Objects (Declarative Resources)
 
 #### 1. Pod
-- Smallest deployable unit.
-- Contains one or more tightly coupled containers sharing:
-  - Network namespace (same IP)
-  - Volumes
-- Ephemeral by design; should be managed by higher-level objects.
+**Definition:** A Pod is the smallest deployable and manageable unit in Kubernetes. It represents a single instance of a running process in the cluster.
+- **Characteristics:**
+  - A Pod can contain **one or more tightly coupled containers** that need to share resources.
+  - Containers in the same Pod share:
+    - **Network namespace:** They can communicate via `localhost` and share the same IP and port space.
+    - **Volumes:** For persistent or shared storage.
+- **Lifecycle:** Pods are ephemeral. They can be created, destroyed, or replaced at any time. Because of their short lifespan, Pods are usually **managed by higher-level controllers**, such as Deployments, ReplicaSets, or StatefulSets, to ensure availability and scalability.
+- **Purpose:** Pods provide a logical host environment for one or more containers that are designed to work together.
 
 ---
 
 #### 2. Service
-Provides **stable networking** to ephemeral Pods.
-
-Types:
-- **ClusterIP** (default)
-- **NodePort**
-- **LoadBalancer**
-- **ExternalName**
-
-Creates a virtual IP that load balances traffic across Pod endpoints.
+**Definition:** A Service in Kubernetes provides a **stable, reliable network endpoint** to access a group of ephemeral Pods. Since Pods are temporary and can be recreated with new IP addresses, Services provide a layer of abstraction for communication.
+- **Key Points:**
+  - Services enable **load balancing** across multiple Pod replicas.
+  - They provide a **consistent IP address** or DNS name that clients can use without worrying about Pod changes.
+- **Types of Services:**
+  - **ClusterIP:** Default type. Provides an internal IP for communication within the cluster.
+  - **NodePort:** Exposes the service on a specific port on each node, allowing external access.
+  - **LoadBalancer:** Integrates with cloud provider load balancers for external access.
+  - **ExternalName:** Maps the service to an external DNS name.
+- **Purpose:** Services decouple the client from the lifecycle of Pods and ensure traffic is always routed to healthy endpoints.
 
 ---
 
 #### 3. Deployment
-Used for stateless applications.
-
-- Manages ReplicaSets.
-- Provides zero-downtime rolling updates & rollbacks.
-- Declarative scaling and versioning.
-
-**DevOps Tip:** Avoid modifying ReplicaSets directly — Deployments own them.
+**Definition:** A Deployment is a Kubernetes controller used to **manage stateless applications**. It declares the desired state for a set of Pods and ReplicaSets, and Kubernetes ensures that the actual state matches the desired state.
+- **Key Responsibilities:**
+  - Manage **ReplicaSets** to ensure the desired number of Pod replicas are running at all times.
+  - Provide **rolling updates** with zero downtime when updating the application version.
+  - Enable **rollback** to previous versions in case of failures.
+  - Handle **scaling** declaratively, allowing you to increase or decrease the number of replicas easily.
+- **DevOps Best Practice:** Always modify Deployments rather than ReplicaSets directly, as Deployments are the owner and maintain the desired state.
 
 ---
 
 #### 4. ConfigMap & Secret
-Used to decouple configuration from container images.
-
-- **ConfigMap** → non-sensitive config.
-- **Secret** → base64-encoded sensitive data (prefer external vaults for true encryption).
-
-Mount as:
-- environment variables
-- volumes
-- container args
+**Definition:** ConfigMaps and Secrets are Kubernetes objects used to **separate configuration data from container images**, allowing the same image to be deployed in different environments without rebuilding.
+- **ConfigMap:**
+  - Used to store **non-sensitive configuration data** (e.g., URLs, feature flags, environment settings).
+- **Secret:**
+  - Stores **sensitive data**, such as passwords, API keys, or certificates.
+  - Data is **base64-encoded**, but for true security, external secret management tools or vaults are recommended.
+- **Usage:**
+  - ConfigMaps and Secrets can be injected into Pods as:
+    - **Environment variables**
+    - **Mounted volumes**
+    - **Command-line arguments**
 
 ---
 
 #### 5. Namespace
-Logical partitioning of cluster resources.
-
-Useful for:
-- multi-tenancy
-- RBAC separation
-- resource quotas
-- environment isolation (dev/staging/prod)
+**Definition:** A Namespace is a **logical partitioning of cluster resources**. Namespaces provide a mechanism to divide cluster resources among multiple users or teams.
+- **Use Cases:**
+  - **Multi-tenancy:** Allow multiple teams or projects to share the same cluster without conflicts.
+  - **RBAC (Role-Based Access Control):** Apply access controls per namespace.
+  - **Resource quotas:** Limit CPU, memory, or storage usage per namespace.
+  - **Environment isolation:** Separate environments like development, staging, and production within the same cluster.
+- **Purpose:** Namespaces help organize cluster resources efficiently, enforce access policies, and prevent conflicts between applications running in the same Kubernetes cluster.
 
 ---
 
